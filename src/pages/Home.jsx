@@ -118,15 +118,15 @@ function Home() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:flex-col gap-8 mt-12 w-[1000px]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 w-full max-w-6xl">
         {tasks.map((task) => (
           <div
             key={task._id}
-            className="bg-white flex justify-between items-center shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition transform hover:scale-105"
+            className="bg-white flex flex-col md:flex-row justify-between items-center shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition transform hover:scale-105"
           >
-            <div>
+            <div className="flex-1 p-4">
               <h1
-                className={`text-lg font-bold p-4 ${
+                className={`text-lg font-bold ${
                   task.isCompleted ? "text-gray-400 line-through" : "text-black"
                 }`}
               >
@@ -134,7 +134,7 @@ function Home() {
               </h1>
               <p className="text-gray-600 m-2 text-2xl">{task.description}</p>
             </div>
-            <div className="gap-5 flex mr-2">
+            <div className="flex gap-5 p-4">
               <input
                 type="checkbox"
                 className="w-6"
