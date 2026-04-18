@@ -15,12 +15,12 @@ function Home() {
   const addTaskList = async () => {
     try {
       const res = await axios.post(
-        "https://algo-root-backend.onrender.com/api/v1/tasks/add-task",
+        "https://algoroot-api.masumx.in/api/v1/tasks/add-task",
         { title, description },
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
-        }
+        },
       );
       if (res.data.success) {
         toast.success(res.data.message);
@@ -39,7 +39,7 @@ function Home() {
     const fetchTasks = async () => {
       try {
         const res = await axios.get(
-          "https://algo-root-backend.onrender.com/api/v1/tasks/getall-task"
+          "https://algoroot-api.masumx.in/api/v1/tasks/getall-task",
         );
         if (res.data.success) {
           setTasks(res.data.tasks);
@@ -55,7 +55,7 @@ function Home() {
   const deleteTask = async (id) => {
     try {
       const res = await axios.delete(
-        `https://algo-root-backend.onrender.com/api/v1/tasks/task-delete/${id}`
+        `https://algoroot-api.masumx.in/api/v1/tasks/task-delete/${id}`,
       );
       if (res.data.success) {
         toast.success(res.data.message);
@@ -70,14 +70,14 @@ function Home() {
   const handleComplete = async (id, isCompleted) => {
     try {
       const res = await axios.put(
-        `https://algo-root-backend.onrender.com/api/v1/tasks/update-task/${id}`,
-        { isCompleted: !isCompleted }
+        `https://algoroot-api.masumx.in/api/v1/tasks/update-task/${id}`,
+        { isCompleted: !isCompleted },
       );
       if (res.data.success) {
         setTasks(
           tasks.map((task) =>
-            task._id === id ? { ...task, isCompleted: !isCompleted } : task
-          )
+            task._id === id ? { ...task, isCompleted: !isCompleted } : task,
+          ),
         );
         if (isCompleted == false) {
           toast.success("Task completed successfully");

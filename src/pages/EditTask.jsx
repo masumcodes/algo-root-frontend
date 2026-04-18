@@ -15,7 +15,7 @@ function EditTask() {
     const fetchTask = async () => {
       try {
         const res = await axios.get(
-          `https://algo-root-backend.onrender.com/api/v1/tasks/taskById/${id}`
+          `https://algoroot-api.masumx.in/api/v1/tasks/taskById/${id}`,
         );
         if (res.data.success) {
           setTitle(res.data.task.title);
@@ -31,8 +31,8 @@ function EditTask() {
   const updateTask = async () => {
     try {
       const res = await axios.put(
-        `https://algo-root-backend.onrender.com/api/v1/tasks/update-task/${id}`,
-        { title, description }
+        `https://algoroot-api.masumx.in/api/v1/tasks/update-task/${id}`,
+        { title, description },
       );
       if (res.data.success) {
         toast.success(res.data.message);
